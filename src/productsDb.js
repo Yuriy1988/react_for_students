@@ -19,11 +19,6 @@ const productsDb = [
     name: 'Audi',
     price: 15000,
     inCart: 0,
-  }, {
-    id: 5,
-    name: 'Bear',
-    price: 1,
-    inCart: 0,
   },
 ];
 
