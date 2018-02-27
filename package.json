@@ -53,7 +53,6 @@
     "react-router-redux": "^4.0.8",
     "react-split-pane": "^0.1.71",
     "redux": "^3.7.2",
-    "redux-form": "^7.0.4",
     "sass-loader": "^6.0.6",
     "save": "^2.3.2",
     "serve": "^6.4.1",

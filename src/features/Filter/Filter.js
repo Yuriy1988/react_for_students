@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Input from '../../Components/Input/Input';
-import Button from '../../Components/Button/Button';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
 import styles from './filter.module.scss';
 
 class Filter extends Component {

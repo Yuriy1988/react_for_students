@@ -1,11 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import { Provider } from 'react-redux';
 import App from './App';
+import configureStore from './configureStore';
+
+const store = configureStore();
 
 const mountApp = document.getElementById('root');
+
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   mountApp
 );
