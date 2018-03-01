@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '../../components/Button/Button';
+import { getCountVolue } from './selectors';
 
 import { increment, decrement } from './counterActions';
 
 const mapStateToProps = (state) => ({
-  value: state.counter.countValue,
+  countValue: getCountVolue(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,15 +15,28 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Counter extends Component {
+  increment = () => {
+    this.props.increment();
+  };
+
+  decrement = () => {
+    this.props.decrement();
+  };
+
   render() {
+    const { countValue } = this.props;
+
     return (
       <div>
-        <div className='card'>Counter value: {this.props.value}</div>
-        <Button onClick={this.props.increment}>Increment</Button>
-        <Button onClick={this.props.decrement}>Decrement</Button>
+        <div className='card'>Counter value: {countValue}</div>
+        <Button onClick={this.increment}>Increment</Button>
+        <Button onClick={this.decrement}>Decrement</Button>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Counter);

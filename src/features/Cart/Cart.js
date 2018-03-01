@@ -1,30 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CartItem from './CartItem';
 import styles from './cart.module.scss';
+import { getProductsInCart, getProductsInCartQuantity, getTotalPrice} from './selectors';
 
-const Cart = (props) => {
-  const products = props.products.filter(product => product.inCart);
-  const totalPrice = products.reduce((acc, product) => {
-    return product.inCart
-      ? acc + product.inCart * product.price
-      : acc;
-  }, 0);
+const mapStateToProps = (state) => ({
+  productsInCart: getProductsInCart(state),
+  productsInCartQuantity: getProductsInCartQuantity(state),
+  totalPrice: getTotalPrice(state),
+});
 
-  const productsInCart = products.reduce((acc, product) => {
-    return product.inCart
-      ? acc + product.inCart
-      : acc;
-  }, 0);
-
+const Cart = ({ productsInCart, productsInCartQuantity, totalPrice }) => {
   return (
     <div className={styles.cart}>
       <h2 className={styles.title}>Cart</h2>
       <div>
         Total price: {totalPrice} $
       </div>
-      <b>Products in Cart: {productsInCart}</b>
+      <b>Products in Cart: {productsInCartQuantity}</b>
       <div>
-        {products.map(product => {
+        {productsInCart.map(product => {
           return (
             <CartItem
               key={product.id}
@@ -37,4 +32,6 @@ const Cart = (props) => {
   );
 };
 
-export default Cart;
+export default connect(
+  mapStateToProps,
+)(Cart);

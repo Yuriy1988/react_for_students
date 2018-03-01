@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import styles from './filter.module.scss';
+import { searchByName, sortByPrice } from './filterActions';
+
+const mapDispatchToProps = (dispatch) => ({
+  searchByName: (name) => dispatch(searchByName(name)),
+  sortByPrice: () => dispatch(sortByPrice()),
+});
 
 class Filter extends Component {
   constructor(props) {
@@ -39,4 +46,7 @@ class Filter extends Component {
   }
 }
 
-export default Filter;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Filter);
