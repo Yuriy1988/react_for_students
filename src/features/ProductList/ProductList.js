@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect }from 'react-redux';
-import PropTypes from 'prop-types';
 import Product from './Product/Product';
 import styles from './productList.module.scss';
 import {
   receiveProducts,
   addToCart,
   removeFromCart,
-  receiveShops
+  receiveShops,
 }from './productsActions';
 import productsDb from '../../newData';
 import { getProducts } from './selector';
-
 
 const mapStateToProps = (state) => ({
   products: getProducts(state),
@@ -32,7 +30,7 @@ class ProductList extends Component {
   }
 
   render() {
-    const { shops, products, addToCart, removeFromCart } = this.props;
+    const { products, addToCart, removeFromCart } = this.props;
     return (
       <div className={styles.productList}>
         <h2 className={styles.title}>Products</h2>
