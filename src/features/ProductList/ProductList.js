@@ -37,14 +37,12 @@ class ProductList extends Component {
         <div className={styles.list} />
         {products.map(product => {
           return (
-            <div>
-              <Product
-                addToCart={addToCart}
-                key={product.id}
-                product={product}
-                removeFromCart={removeFromCart}
-              />
-            </div>
+            <Product
+              addToCart={addToCart}
+              key={product.id}
+              product={product}
+              removeFromCart={removeFromCart}
+            />
           );
         })}
       </div>
