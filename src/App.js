@@ -1,85 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import productsDb from './productsDb';
 
 import Filter from './features/Filter/Filter';
 import ProductList from './features/ProductList/ProductList';
 import Cart from './features/Cart/Cart';
+import { receiveProducts } from './features/ProductList/productActions';
+
+const mapDispatchToPrpops = (dispatch) => ({
+  receiveProducts: (products) => dispatch(receiveProducts(products)),
+});
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      products: productsDb,
-      isSorted: false,
-      searchValue: '',
-    };
+  componentDidMount() {
+    this.props.receiveProducts(productsDb);
   }
 
-  addToCart = (id) => {
-    this.setState({
-      products: this.state.products.map(product => product.id === id
-        ? { ...product, inCart: product.inCart + 1 }
-        : product
-      ),
-    });
-  };
-
-  sortByPrice = () => {
-    this.setState({
-      isSorted: true,
-    });
-  };
-
-  searchByName = (value) => {
-    this.setState({
-      searchValue: value.toLowerCase(),
-    });
-  };
-
-  removeFromCart = (id) => {
-    this.setState({
-      products: this.state.products.map(product => {
-        const updatedProduct = product.inCart === 0
-          ? product
-          : { ...product, inCart: product.inCart - 1 };
-        return product.id === id
-          ? updatedProduct
-          : product;
-      }),
-    });
-  };
-
   render() {
-    const { products } = this.state;
-    const { isSorted, searchValue } = this.state;
-    let filteredProducts = isSorted
-      ? [...products].sort((a,b) => a.price > b.price ? 1 : -1)
-      : products;
-
-    filteredProducts = searchValue
-      ? filteredProducts.filter(product => (
-        product.name.toLowerCase().includes(searchValue)
-      ))
-      : filteredProducts;
-
     return (
       <div>
-        <Filter
-          searchByName={this.searchByName}
-          sortByPrice={this.sortByPrice}
-        />
+        <Filter />
         <div className='flex'>
-          <ProductList
-            addToCart={this.addToCart}
-            products={filteredProducts}
-            removeFromCart={this.removeFromCart}
-          />
-          <Cart products={products} />
+          <ProductList />
+          <Cart />
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  null, mapDispatchToPrpops,
+)(App);

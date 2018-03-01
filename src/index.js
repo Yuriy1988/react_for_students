@@ -12,7 +12,7 @@ const mountApp = document.getElementById('root');
 
 render(
   <Provider store={store}>
-    <Counter />
+    <App />
   </Provider>,
   mountApp
 );
