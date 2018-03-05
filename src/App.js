@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Routes from './Routes';
+import Routes from './RoutesExpamle';
 import NavBar from './RoutingExamples/NavBar/NavBar';
 
 const App = () => (

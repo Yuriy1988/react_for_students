@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
 import Button from '../../../components/Button/Button';
 import styles from './product.module.scss';
 
@@ -7,9 +9,9 @@ const Product = (props) => {
 
   return (
     <div className={styles.product}>
-      <div>
+      <Link to={`/products/${product.id}`}>
         <b>Product name: {product.name}</b>
-      </div>
+      </Link>
       <div>
         <b>Product price $: {product.price}</b>
       </div>
@@ -26,4 +28,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default withRouter(Product);

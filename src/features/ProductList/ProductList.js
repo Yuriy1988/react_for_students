@@ -7,7 +7,7 @@ import {
   addToCart,
   removeFromCart,
   receiveShops,
-}from './productsActions';
+} from './productsActions';
 import productsDb from '../../newData';
 import { getProducts } from './selector';
 
@@ -31,6 +31,7 @@ class ProductList extends Component {
 
   render() {
     const { products, addToCart, removeFromCart } = this.props;
+
     return (
       <div className={styles.productList}>
         <h2 className={styles.title}>Products</h2>
