@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const Cart = ({ productsInCart, productsInCartQuantity, totalPrice }) => {
+  console.log(111, productsInCart)
   return (
     <div className={styles.cart}>
       <h2 className={styles.title}>Cart</h2>

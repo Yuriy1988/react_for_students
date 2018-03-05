@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link }from 'react-router-dom';
 import Button from '../../../components/Button/Button';
 import styles from './product.module.scss';
 
@@ -8,7 +9,9 @@ const Product = (props) => {
   return (
     <div className={styles.product}>
       <div>
-        <b>Product name: {product.name}</b>
+        <Link to={`/product/${product.id}`}>
+          <b>Product name: {product.name}</b>
+        </Link>
       </div>
       <div>
         <b>Product price $: {product.price}</b>

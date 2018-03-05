@@ -34,17 +34,17 @@ class Routes extends Component {
             path='/page2'
           />
           <Route
-            render={() => <PrivatePage isLoggedIn={isLoggedIn} />}
             exact
             path='/private'
+            render={() => <PrivatePage isLoggedIn={isLoggedIn} />}
           />
           <Route
             component={LoginFailed}
             path='/loginFailed'
           />
           <Route
-            render={() => <Page2 test='HOME PAGE' />}
             path='/'
+            render={() => <Page2 test='HOME PAGE' />}
           />
         </Switch>
       </div>

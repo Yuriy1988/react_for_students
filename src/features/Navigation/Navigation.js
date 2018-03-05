@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import styles from './navBar.module.scss';
+import { NavLink } from 'react-router-dom';
+import styles from './navigation.module.scss';
 
 const NavBar = () => (
   <Fragment>
@@ -8,22 +8,16 @@ const NavBar = () => (
       <NavLink
         activeClassName={styles.active}
         className={styles.link}
-        to='/page2'
+        to='/'
       >
-        Page 2
+        Products
       </NavLink>
       <NavLink
         activeClassName={styles.active}
         activeStyle={{ fontWeight: 'bold', color: 'red' }}
         className={styles.link}
-        to='/page1'
-      >Page1</NavLink>
-      <NavLink
-        activeClassName={styles.active}
-        activeStyle={{ fontWeight: 'bold', color: 'red' }}
-        className={styles.link}
-        to='/private'
-      >Private Page</NavLink>
+        to='/cart'
+      >Cart</NavLink>
     </div>
   </Fragment>
 );

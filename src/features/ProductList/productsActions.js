@@ -1,7 +1,17 @@
-import { RECEIVE_PRODUCTS, ADD_TO_CART, REMOVE_FROM_CART } from './types';
+import {
+  RECEIVE_PRODUCTS,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  EDIT_PRODUCT,
+} from './types';
 
 export const receiveProducts = (payload) => ({
   type: RECEIVE_PRODUCTS,
+  payload,
+});
+
+export const editProduct = (payload) => ({
+  type: EDIT_PRODUCT,
   payload,
 });
 

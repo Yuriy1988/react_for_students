@@ -1,4 +1,9 @@
-import { RECEIVE_PRODUCTS, ADD_TO_CART, REMOVE_FROM_CART } from './types';
+import {
+  RECEIVE_PRODUCTS,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  EDIT_PRODUCT,
+} from './types';
 
 export default function productsReducer(state = { products: [], shops: [] }, action) {
   switch (action.type) {
@@ -6,6 +11,15 @@ export default function productsReducer(state = { products: [], shops: [] }, act
       return {
         ...state,
         products: action.payload,
+      };
+
+    case EDIT_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map(product => product.id === action.payload.id
+          ? action.payload
+          : product
+        ),
       };
 
     case ADD_TO_CART:
