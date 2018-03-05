@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: aliceblue;
+  height: 100px;
+  align-items: center;
+}
+
+.link {
+  font-size: 40px;
+}
+
+.active {
+  background: darkorange;
+}

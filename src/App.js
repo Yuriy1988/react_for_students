@@ -1,20 +1,12 @@
-import React, { Component } from 'react';
-import Filter from './features/Filter/Filter';
-import ProductList from './features/ProductList/ProductList';
-import Cart from './features/Cart/Cart';
+import React, { Fragment } from 'react';
+import Routes from './Routes';
+import NavBar from './RoutingExamples/NavBar/NavBar';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Filter />
-        <div className='flex'>
-          <ProductList />
-          <Cart />
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Fragment>
+    <NavBar />
+    <Routes />
+  </Fragment>
+);
 
 export default App;
