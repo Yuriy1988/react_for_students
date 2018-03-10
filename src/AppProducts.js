@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RoutesForProducts from './RoutesForProducts';
+import Routes from './Routes';
 import Navigation from './features/Navigation/Navigation';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        <RoutesForProducts />
+        <Routes />
       </div>
     );
   }

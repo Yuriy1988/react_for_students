@@ -5,6 +5,15 @@ import {
   EDIT_PRODUCT,
 } from './types';
 
+export const fetchProducts = () => {
+  return (dispatch, state, api) => {
+    api('products')
+      .then(response => {
+        dispatch(receiveProducts(response.data))
+      });
+  };
+};
+
 export const receiveProducts = (payload) => ({
   type: RECEIVE_PRODUCTS,
   payload,

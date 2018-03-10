@@ -7,8 +7,8 @@ import {
   addToCart,
   removeFromCart,
   receiveShops,
+  fetchProducts,
 }from './productsActions';
-import productsDb from '../../newData';
 import { getProducts } from './selector';
 
 const mapStateToProps = (state) => ({
@@ -20,20 +20,21 @@ const mapDispatchToProps = (dispatch) => ({
   receiveProducts: (products) => dispatch(receiveProducts(products)),
   receiveShops: (products) => dispatch(receiveShops(products)),
   addToCart: (id) => dispatch(addToCart(id)),
+  fetchProducts: () => dispatch(fetchProducts()),
   removeFromCart: (id) => dispatch(removeFromCart(id)),
 });
 
 class ProductList extends Component {
   componentDidMount() {
     if (!this.props.products.length) {
-      this.props.receiveProducts(productsDb.products);
+      this.props.fetchProducts();
     }
-
-    this.props.receiveShops(productsDb.shops);
+    this.props.fetchProducts();
   }
 
   render() {
     const { products, addToCart, removeFromCart } = this.props;
+
     return (
       <div className={styles.productList}>
         <h2 className={styles.title}>Products</h2>

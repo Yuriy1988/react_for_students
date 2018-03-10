@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.2",
+    "axios": "^0.18.0",
     "babel-core": "6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "20.0.3",
@@ -53,6 +54,7 @@
     "react-router-redux": "^4.0.8",
     "react-split-pane": "^0.1.71",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "save": "^2.3.2",
     "serve": "^6.4.1",
