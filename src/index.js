@@ -6,6 +6,8 @@ import configureStore from './configureStore';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter } from 'react-router-dom';
+import Example from './features/HOC example/Example';
+
 
 const store = configureStore();
 const mountApp = document.getElementById('root');
@@ -13,7 +15,7 @@ const mountApp = document.getElementById('root');
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <AppProducts />
+      <Example />
     </BrowserRouter>
   </Provider>,
   mountApp
