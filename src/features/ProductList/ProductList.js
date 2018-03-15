@@ -25,6 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class ProductList extends Component {
   componentDidMount() {
+    console.log('fuck')
     if (!this.props.products.length) {
       this.props.receiveProducts(productsDb.products);
     }

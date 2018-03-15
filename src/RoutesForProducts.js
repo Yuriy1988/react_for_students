@@ -31,9 +31,9 @@ class Routes extends Component {
           path='/product/:id'
         />
         <Route
-          exact
           component={EditProduct}
           path='/edit/:id'
+          exact
         />
       </Switch>
     );

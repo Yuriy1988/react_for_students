@@ -1,70 +1,64 @@
-import React, { Component } from 'react';
-import { connect }from 'react-redux';
+import React, { Component } from 'react'
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form'
 import { editProduct } from '../productsActions';
+import styled from 'styled-components';
 
 const mapStateToProps = (state, ownProps) => ({
-  product: state.products.products.find(product => String(product.id) === ownProps.match.params.id),
+  initialValues: state.products.products.find(product => String(product.id) === ownProps.match.params.id),
 });
 
 const mapDispatchToProps = {
-  editProduct,
+  editProduct: editProduct,
 };
 
-class EditProduct extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: props.product.name,
-      price: props.product.price,
-    };
+const Title = styled.h1`
+  margin: 20px;
+  color: rebeccapurple;
+`;
+
+class SimpleForm extends Component {
+  handleSave = (aaa) =>  {
+    console.log(aaa);
+    return aaa;
   }
 
-  onNameChange = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
-
-  onPriceChange = (e) => {
-    this.setState({
-      price: e.target.value,
-    });
-  };
-
-  onSave = () => {
-    const product = { ...this.props.product, ...this.state };
-    console.log('product', product);
-    this.props.editProduct(product);
-  };
-
   render() {
-    const { name, price } = this.state;
-    if (!name) return <div> NO product</div>;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
-      <div>
+      <form onSubmit={handleSubmit(this.handleSave)} style={{ marginLeft: 100}}>
+        <Title>AAAAAAA</Title>
         <div>
-          <b>Product name: </b>
-          <input
-            onChange={this.onNameChange}
-            value={name}
+          <Field
+            name="name"
+            component="input"
+            type="text"
+            placeholder="name"
           />
         </div>
         <div>
-          <b>Product price $</b>
-          <input
-            onChange={this.onPriceChange}
-            value={price}
+          <Field
+            name="price"
+            component="input"
+            type="text"
+            placeholder="price"
           />
         </div>
         <div>
-          <button onClick={this.onSave}>SAVE</button>
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+          <button type="button" disabled={pristine || submitting} onClick={reset}>
+            Clear Values
+          </button>
         </div>
-      </div>
-    );
+      </form>
+    )
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EditProduct);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: 'edit' })
+)(SimpleForm)
