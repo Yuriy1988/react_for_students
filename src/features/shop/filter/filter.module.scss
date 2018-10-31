@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+
+  .btnGroup {
+    display: flex;
+  }
+
+  .description {
+    margin-right: 15px;
+  }
+
+  .input {
+    width: 40%;
+  }
+}

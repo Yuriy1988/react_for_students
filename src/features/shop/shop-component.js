@@ -1,28 +1,35 @@
 import React from 'react';
 
 import ProductList from './produc-list/product-list-component';
-import Cart from "./cart/cart-component";
+import Cart from './cart/cart-component';
 import Filter from './filter/filter-component';
 import styles from './shop.module.scss';
 
 const cars = [
   {
     name: 'BMW',
-    price: '50000',
+    price: 50000,
     inCart: 0,
   }, {
     name: 'Audi',
-    price: '40000',
+    price: 40000,
     inCart: 0,
   }, {
     name: 'Lada',
-    price: '500',
+    price: 500,
+    inCart: 0,
+  }, {
+    name: 'Fiat',
+    price: 12000,
+    inCart: 0,
+  }, {
+    name: 'Renault',
+    price: 14000,
     inCart: 0,
   },
 ];
 
 class Shop extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -45,6 +52,9 @@ class Shop extends React.Component {
   removeFromCart = (name) => {
     this.setState({
       cars: this.state.cars.map(c => {
+        if (c.inCart < 1) {
+          return c;
+        }
         return c.name === name
           ? { ...c, inCart: c.inCart - 1 }
           : c;
@@ -56,40 +66,83 @@ class Shop extends React.Component {
     if (!e.target.value) {
       this.setState({
         filterValue: e.target.value,
-        filteredProducts: this.state.cars,
       });
       return;
     }
 
-    const filteredProducts = this.state.cars.filter(p => {
-      return p.name.includes(e.target.value);
-    });
-
     this.setState({
       filterValue: e.target.value,
-      filteredProducts,
     });
   };
 
+  getSortedProducts = (products, sortByValue) => {
+    if (!sortByValue) {
+      return products;
+    }
+
+    return [...products].sort((a, b) => a[sortByValue] > b[sortByValue] ? 1 : - 1);
+  };
+
+  getFilteredProducts = (products, filterValue, sortByValue) => {
+    let filteredProducts = products;
+
+    if (sortByValue) {
+      filteredProducts = this.getSortedProducts(filteredProducts, sortByValue);
+    }
+
+    if (!filterValue) {
+      return filteredProducts;
+    }
+
+    return filteredProducts.filter(p => {
+      const nameLowerCase = p.name.toLowerCase();
+      const filterValueLoverCase = filterValue.toLowerCase();
+      return nameLowerCase.includes(filterValueLoverCase);
+    });
+  };
+
+  handleSort = (sortByValue) => {
+    this.setState({
+      sortByValue,
+    });
+  };
+
+  getTotalPrice = (products) => {
+    return products.reduce((acc, p) => {
+      const price = p.inCart * p.price;
+      return acc + price;
+    }, 0);
+  };
+
+  getProductsInCart = (products) => {
+    return products
+      .filter(p => p.inCart > 0)
+      .map(p => p.name)
+      .join(', ');
+  };
+
   render() {
-    const { cars, filterValue, filteredProducts } = this.state;
-    console.log('filteredProducts', filteredProducts);
+    const { cars, filterValue, sortByValue } = this.state;
+    const filteredProducts = this.getFilteredProducts(cars, filterValue, sortByValue);
+    const totalPrice = this.getTotalPrice(cars);
+    const productsInCart = this.getProductsInCart(cars);
 
     return (
       <div >
         <Filter
           handleFilterChange={this.handleFilterChange}
+          handleSort={this.handleSort}
           value={filterValue}
         />
         <div className={styles.shop}>
           <ProductList
             addToCart={this.addToCart}
+            products={filteredProducts}
             removeFromCart={this.removeFromCart}
-            products={cars}
-            className={styles.productList}
           />
           <Cart
-            products={cars}
+            productsInCart={productsInCart}
+            totalPrice={totalPrice}
           />
         </div>
       </div>
