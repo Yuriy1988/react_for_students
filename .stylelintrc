@@ -2,5 +2,8 @@
   "extends": [
     "stylelint-config-standard"
   ],
-  "syntax": "scss"
+  "syntax": "scss",
+  "rules": {
+    "property-case": null
+  }
 }
