@@ -36,6 +36,7 @@ class Shop extends React.Component {
     this.state = {
       cars,
       filterValue: '',
+      sortByValue: '',
     };
   }
 
@@ -75,6 +76,12 @@ class Shop extends React.Component {
     });
   };
 
+  handleSort = (sortByValue) => {
+    this.setState({
+      sortByValue,
+    });
+  };
+
   getSortedProducts = (products, sortByValue) => {
     if (!sortByValue) {
       return products;
@@ -98,12 +105,6 @@ class Shop extends React.Component {
       const nameLowerCase = p.name.toLowerCase();
       const filterValueLoverCase = filterValue.toLowerCase();
       return nameLowerCase.includes(filterValueLoverCase);
-    });
-  };
-
-  handleSort = (sortByValue) => {
-    this.setState({
-      sortByValue,
     });
   };
 
@@ -149,6 +150,5 @@ class Shop extends React.Component {
     );
   }
 }
-
 
 export default Shop;
