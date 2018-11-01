@@ -3,7 +3,7 @@ import React from 'react';
 import ProductList from './produc-list/product-list-component';
 import Cart from './cart/cart-component';
 import Filter from './filter/filter-component';
-import styles from './shop.module.scss';
+import styles from './shop.scss';
 
 const cars = [
   {

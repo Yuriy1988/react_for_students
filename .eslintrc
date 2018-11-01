@@ -16,7 +16,6 @@
     }
   },
   "rules": {
-    "linebreak-style": ["error", "unix"],
     "eol-last": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "indent": ["error", 2, { "SwitchCase": 1 }],
@@ -67,7 +66,6 @@
     "react/no-multi-comp": "error",
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",
-    "react/prop-types": "error",
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
     "semi": ["error", "always", { "omitLastInOneLineBlock": true }],
