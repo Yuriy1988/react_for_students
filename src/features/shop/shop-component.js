@@ -5,11 +5,11 @@ import ProductList from './produc-list/product-list-component';
 import Cart from './cart/cart-component';
 import Filter from './filter/filter-component';
 import styles from './shop.scss';
-import { addToCart } from './actions';
+import { addToCart, removeFromCart } from './actions';
 import { getFilteredProducts, getTotalPrice, getProductsInCart } from './selectors';
 
 const Shop = (props) => {
-  const { cars, addToCart, totalPrice, productsInCart } = props;
+  const { cars, addToCart, totalPrice, productsInCart, removeFromCart } = props;
 
   return (
     <div >
@@ -18,7 +18,7 @@ const Shop = (props) => {
         <ProductList
           addToCart={addToCart}
           products={cars}
-          removeFromCart={this.removeFromCart}
+          removeFromCart={removeFromCart}
         />
         <Cart
           productsInCart={productsInCart}
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (name) => dispatch(addToCart(name)),
-  removeFromCart: (name) => dispatch(addToCart(name)),
+  removeFromCart: (name) => dispatch(removeFromCart(name)),
 });
 
 export default connect(

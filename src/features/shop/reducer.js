@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from './types';
+import { ADD_TO_CART, REMOVE_FROM_CART } from './types';
 
 const products = [
   {
@@ -32,6 +32,20 @@ export default function productsReducer(state = { products }, action) {
         products: state.products.map(c => {
           return c.name === action.payload
             ? { ...c, inCart: c.inCart + 1 }
+            : c;
+        }),
+      };
+
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        products: state.products.map(c => {
+          if (c.inCart < 1) {
+            return c;
+          }
+
+          return c.name === action.payload
+            ? { ...c, inCart: c.inCart - 1 }
             : c;
         }),
       };
