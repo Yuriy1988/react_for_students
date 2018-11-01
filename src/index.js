@@ -1,11 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+
 import App from './core/app';
 
-const mountApp = document.getElementById('root');
-render(
-  <App />,
-  mountApp
+ReactDOM.render(
+  <AppContainer>
+    <App />
+  </AppContainer>,
+  document.getElementById('root')
 );
