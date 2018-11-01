@@ -1,10 +1,11 @@
-import { SEARCH_BY_NAME, SORT_BY_PRICE } from './types';
+import { SEARCH_BY_NAME, SORT_BY } from './types';
 
 export const searchByName = (payload) => ({
   type: SEARCH_BY_NAME,
   payload,
 });
 
-export const sortByPrice = (payload) => ({
-  type: SORT_BY_PRICE,
+export const sortBy = (payload) => ({
+  type: SORT_BY,
+  payload,
 });
