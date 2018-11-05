@@ -1,9 +1,7 @@
-const getSortedProducts = (products, sortByValue) => {
-  if (!sortByValue) {
-    return products;
-  }
-
-  return [...products].sort((a, b) => a[sortByValue] > b[sortByValue] ? 1 : - 1);
+const getSortedProducts = (products, sortedNames) => {
+  return sortedNames
+    .map(name => products.find(p => p.name === name))
+    .filter(Boolean);
 };
 
 export const getFilteredProducts = (products, filterValue, sortByValue) => {
@@ -36,4 +34,8 @@ export const getProductsInCart = (products) => {
     .filter(p => p.inCart > 0)
     .map(p => p.name)
     .join(', ');
+};
+
+export const getProductByName = (products, name) => {
+  return products.find(p => p.name.toLowerCase() === name.toLowerCase());
 };

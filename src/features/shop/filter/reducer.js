@@ -16,7 +16,7 @@ export default function filterReducer(state = initialState, action) {
     case SORT_BY:
       return {
         ...state,
-        sortBy: action.payload,
+        sortOrder: action.payload
       };
 
     default:

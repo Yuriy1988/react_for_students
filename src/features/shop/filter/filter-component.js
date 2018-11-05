@@ -6,15 +6,22 @@ import styles from './filter.module.scss';
 import { searchByName, sortBy } from './actions';
 
 const Filter = (props) => {
-  const { handleFilterChange, value, sortBy } = props;
+  const { handleFilterChange, value, sortBy, products } = props;
+
+  const handleSort = (sortByValue, products) => {
+    const ids = [...products]
+      .sort((a, b) => a[sortByValue] > b[sortByValue] ? 1 : - 1)
+      .map(p => p.name);
+
+    sortBy(ids);
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.btnGroup}>
-        <Button onClick={sortBy.bind(null, 'name')}>Sort by name</Button>
-        <Button onClick={sortBy.bind(null, 'price')}>Sort by price</Button>
-        <Button onClick={sortBy.bind(null, 'inCart')}>Sort by q-ty in cart</Button>
-        <Button onClick={sortBy.bind(null, null)}>Disable sort</Button>
+        <Button onClick={handleSort.bind(null, 'name', products)}>Sort by name</Button>
+        <Button onClick={handleSort.bind(null, 'price', products)}>Sort by price</Button>
+        <Button onClick={handleSort.bind(null, 'inCart', products)}>Sort by q-ty in cart</Button>
       </div>
 
       <div>
@@ -33,6 +40,7 @@ const Filter = (props) => {
 
 const mapStateToProps = (state) => ({
   value: state.filter.filterValue,
+  products: state.shop.products,
 });
 
 const mapDispatchToProps = (dispatch) => ({

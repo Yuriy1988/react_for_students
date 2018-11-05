@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../product/product-component';
+import Product from './product/product-component';
 import styles from './product-list.module.scss';
 
 const ProductList = (props) => {
