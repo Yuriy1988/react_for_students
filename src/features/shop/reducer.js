@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './types';
+import { ADD_TO_CART, REMOVE_FROM_CART, DELETE_PRODUCT } from './types';
 
 const products = [
   {
@@ -26,6 +26,14 @@ const products = [
 
 export default function productsReducer(state = { products }, action) {
   switch (action.type) {
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(c => {
+          return c.name !== action.payload;
+        }),
+      };
+
     case ADD_TO_CART:
       return {
         ...state,

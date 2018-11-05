@@ -14,7 +14,6 @@ const Routes = () => {
       />
       <Route
         component={Shop}
-        exact
         path='/shop'
       />
       <Route

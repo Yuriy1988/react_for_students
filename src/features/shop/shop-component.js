@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route, Link } from 'react-router-dom';
+import { addToCart, removeFromCart, deleteProduct } from './actions';
+import {
+  getFilteredProducts,
+  getTotalPrice,
+  getProductsInCart,
+} from './selectors';
+import Product from "./product/product-component";
+import Cart from "./cart/cart-component";
 
-import Nav from './shared/nav-component';
-import ProductList from './produc-list/product-list-component';
-import Filter from './filter/filter-component';
-import styles from './shop.scss';
-import { addToCart, removeFromCart } from './actions';
-import { getFilteredProducts, getTotalPrice, getProductsInCart } from './selectors';
+const Feature1 = () => <div>Feature1</div>;
+const Feature2 = () => <div>Feature2</div>;
 
 const Shop = (props) => {
-  const { cars, addToCart, removeFromCart } = props;
-
-  return (
+   return (
     <div>
-      <Nav />
-      <Filter />
-      <div className={styles.shop}>
-        <ProductList
-          addToCart={addToCart}
-          products={cars}
-          removeFromCart={removeFromCart}
+      <Link to={`${props.match.path}/test1`}>Feature1</Link>
+      <Link to={`${props.match.path}/test2`}>Feature2</Link>
+      <Switch>
+        <Route
+          component={Feature1}
+          exact
+          path={`${props.match.path}/test1`}
         />
-      </div>
+        <Route
+          component={Feature2}
+          exact
+          path={`${props.match.path}/test2`}
+        />
+      </Switch>
     </div>
-  );
-};
+ );
+}
 
 const mapStateToProps = (state) => ({
   cars: getFilteredProducts(
@@ -38,6 +46,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (name) => dispatch(addToCart(name)),
+  deleteProduct: (name) => dispatch(deleteProduct(name)),
   removeFromCart: (name) => dispatch(removeFromCart(name)),
 });
 
