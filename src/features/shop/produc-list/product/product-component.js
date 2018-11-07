@@ -5,7 +5,7 @@ import Button from '../../../../shared/components/button/button-component';
 import styles from './product.module.scss';
 
 const Product = (props) => {
-  const { product, addToCart, removeFromCart, deleteProduct } = props;
+  const { product, addToCart, removeFromCart } = props;
 
   return (
     <div
@@ -22,10 +22,7 @@ const Product = (props) => {
         Add to cart
       </Button>
       <Button onClick={removeFromCart.bind(null, product.name)}>
-       Remove from cart
-      </Button>
-      <Button onClick={deleteProduct.bind(null, product.name)}>
-        Delete product
+        Remove from cart
       </Button>
     </div>
   );

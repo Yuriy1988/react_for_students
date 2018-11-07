@@ -3,7 +3,7 @@ import Product from './product/product-component';
 import styles from './product-list.module.scss';
 
 const ProductList = (props) => {
-  const { products, addToCart, removeFromCart, deleteProduct } = props;
+  const { products, addToCart, removeFromCart } = props;
 
   return (
     <div className={styles.productList}>
@@ -12,7 +12,6 @@ const ProductList = (props) => {
           return (
             <Product
               addToCart={addToCart}
-              deleteProduct={deleteProduct}
               key={p.name}
               product={p}
               removeFromCart={removeFromCart}

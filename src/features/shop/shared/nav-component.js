@@ -1,21 +1,21 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './nav.scss';
 
 const Nav = () => {
   return (
     <Fragment>
-      <Link
+      <NavLink
         activeClassName={styles.active}
         className={styles.nav}
         exact
         to='/cart'
-      >Go to cart</Link>
-      <Link
+      >Go to cart</NavLink>
+      <NavLink
         activeClassName={styles.active}
         exact
         to='/shop'
-      >Go to shop</Link>
+      >Go to shop</NavLink>
     </Fragment>
   );
 };
