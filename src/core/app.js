@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './routes';
+import Routes from './routing/routes';
 
 import configureStore from './configure-store';
 const store = configureStore();

@@ -1,0 +1,2 @@
+export const LOGIN_FORM_CHANGE = 'LOGIN_FORM_CHANGE';
+export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
