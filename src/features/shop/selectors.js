@@ -37,5 +37,5 @@ export const getProductsInCart = (products) => {
 };
 
 export const getProductById = (products, id) => {
-  return products.find(p => p.id() === id);
+  return products.find(p => String(p.id) === String(id));
 };

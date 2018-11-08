@@ -10,6 +10,14 @@ export const fetchProducts = () => {
   };
 };
 
+export const editProduct = (product) => {
+  return () => {
+    api(`products/${product.id}`, 'patch', product);
+    return Promise.resolve();
+  };
+}
+
+
 export const addToCart = (product) => {
   return (dispatch) => {
     api(`products/${product.id}`, 'patch', { ...product, inCart: product.inCart + 1 })

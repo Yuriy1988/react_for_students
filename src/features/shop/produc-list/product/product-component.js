@@ -13,7 +13,7 @@ const Product = (props) => {
       style={{ border: '1px solid black' }}
     >
       <h2>Name:
-        <Link to={`products/${product.name}`}>{product.name}</Link>
+        <Link to={`products/${product.id}`}>{product.name}</Link>
       </h2>
       <p>Price: {product.price}</p>
       <p>In Cart: {product.inCart}</p>
