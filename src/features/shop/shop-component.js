@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from './shared/nav-component';
 import ProductList from './produc-list/product-list-component';
 import Filter from './filter/filter-component';
 import styles from './shop.scss';
-import { addToCart, removeFromCart } from './actions';
+import { addToCart, removeFromCart, fetchProducts } from './actions';
 import { getFilteredProducts, getTotalPrice, getProductsInCart } from './selectors';
 
-const Shop = (props) => {
-  const { cars, addToCart, removeFromCart } = props;
+class Shop extends Component {
+  componentDidMount() {
+    this.props.fetchProducts();
+  }
 
-  return (
-    <div>
-      <Nav />
-      <Filter />
-      <div className={styles.shop}>
-        <ProductList
-          addToCart={addToCart}
-          products={cars}
-          removeFromCart={removeFromCart}
-        />
+  render() {
+    const { cars, addToCart, removeFromCart } = this.props;
+
+    return (
+      <div>
+        <Nav />
+        <Filter />
+        <div className={styles.shop}>
+          <ProductList
+            addToCart={addToCart}
+            products={cars}
+            removeFromCart={removeFromCart}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   cars: getFilteredProducts(
@@ -39,6 +45,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (name) => dispatch(addToCart(name)),
   removeFromCart: (name) => dispatch(removeFromCart(name)),
+  fetchProducts: () => dispatch(fetchProducts()),
 });
 
 export default connect(

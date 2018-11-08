@@ -1,31 +1,13 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './types';
+import { ADD_TO_CART, REMOVE_FROM_CART, RECEIVE_PRODUCTS } from './types';
 
-const products = [
-  {
-    name: 'BMW',
-    price: 50000,
-    inCart: 0,
-  }, {
-    name: 'Audi',
-    price: 40000,
-    inCart: 0,
-  }, {
-    name: 'Lada',
-    price: 500,
-    inCart: 0,
-  }, {
-    name: 'Fiat',
-    price: 12000,
-    inCart: 0,
-  }, {
-    name: 'Renault',
-    price: 14000,
-    inCart: 0,
-  },
-];
-
-export default function productsReducer(state = { products }, action) {
+export default function productsReducer(state = { products: [] }, action) {
   switch (action.type) {
+    case RECEIVE_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
     case ADD_TO_CART:
       return {
         ...state,
