@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 class PrivateRoute extends Component {
   render() {
     const { isLoggedIn, ...props } = this.props;
+
     return isLoggedIn
       ? <Route {...props} />
       : <Redirect to='/auth' />;

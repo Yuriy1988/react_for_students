@@ -12,7 +12,7 @@ const ProductList = (props) => {
           return (
             <Product
               addToCart={addToCart}
-              key={p.name}
+              key={p.id}
               product={p}
               removeFromCart={removeFromCart}
             />

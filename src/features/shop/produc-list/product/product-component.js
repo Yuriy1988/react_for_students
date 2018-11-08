@@ -18,10 +18,10 @@ const Product = (props) => {
       <p>Price: {product.price}</p>
       <p>In Cart: {product.inCart}</p>
       <p>Total price: {product.price * product.inCart}</p>
-      <Button onClick={addToCart.bind(null, product.name)}>
+      <Button onClick={addToCart.bind(null, product)}>
         Add to cart
       </Button>
-      <Button onClick={removeFromCart.bind(null, product.name)}>
+      <Button onClick={removeFromCart.bind(null, product)}>
         Remove from cart
       </Button>
     </div>

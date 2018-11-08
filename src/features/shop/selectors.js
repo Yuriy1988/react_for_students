@@ -1,6 +1,6 @@
-const getSortedProducts = (products, sortedNames) => {
-  return sortedNames
-    .map(name => products.find(p => p.name === name))
+const getSortedProducts = (products, sortedIds) => {
+  return sortedIds
+    .map(id => products.find(p => p.id === id))
     .filter(Boolean);
 };
 
@@ -32,10 +32,10 @@ export const getTotalPrice = (products) => {
 export const getProductsInCart = (products) => {
   return products
     .filter(p => p.inCart > 0)
-    .map(p => p.name)
+    .map(p => p.id)
     .join(', ');
 };
 
-export const getProductByName = (products, name) => {
-  return products.find(p => p.name.toLowerCase() === name.toLowerCase());
+export const getProductById = (products, id) => {
+  return products.find(p => p.id() === id);
 };

@@ -12,7 +12,7 @@ export default function productsReducer(state = { products: [] }, action) {
       return {
         ...state,
         products: state.products.map(c => {
-          return c.name === action.payload
+          return c.id === action.payload
             ? { ...c, inCart: c.inCart + 1 }
             : c;
         }),
@@ -26,7 +26,7 @@ export default function productsReducer(state = { products: [] }, action) {
             return c;
           }
 
-          return c.name === action.payload
+          return c.id === action.payload
             ? { ...c, inCart: c.inCart - 1 }
             : c;
         }),

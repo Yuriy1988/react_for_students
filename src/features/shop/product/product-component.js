@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getProductByName } from '../selectors';
+import { getProductById } from '../selectors';
 import styles from './product.module.scss';
 
 const Product = (props) => {
@@ -25,7 +25,7 @@ const Product = (props) => {
 };
 
 const mapStateToProps = (state, props) => ({
-  product: getProductByName(state.shop.products, props.match.params.name),
+  product: getProductById(state.shop.products, props.match.params.id),
 });
 
 export default connect(

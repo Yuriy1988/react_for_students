@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Shop from '../../features/shop/shop-component';
 import Cart from '../../features/shop/cart/cart-component';
 import Product from '../../features/shop/product/product-component';
@@ -9,7 +9,7 @@ import Login from '../../features/auth/auth-component';
 const Routes = () => {
   return (
     <Switch>
-      <PrivateRoute
+      <Redirect
         exact
         from='/'
         to='/shop'
@@ -31,7 +31,7 @@ const Routes = () => {
       <PrivateRoute
         component={Product}
         exact
-        path='/products/:name'
+        path='/products/:id'
       />
     </Switch>
   );

@@ -11,7 +11,7 @@ const Filter = (props) => {
   const handleSort = (sortByValue, products) => {
     const ids = [...products]
       .sort((a, b) => a[sortByValue] > b[sortByValue] ? 1 : - 1)
-      .map(p => p.name);
+      .map(p => p.id);
 
     sortBy(ids);
   };

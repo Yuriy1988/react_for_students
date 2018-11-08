@@ -19,10 +19,10 @@ const Auth = (props) => {
     <div className={styles.root}>
       <h1>AUTH PAGE</h1>
       <div>
-        <Link to={registerPath}>Don't have an account ? The REGISTER</Link>
+        <Link to={registerPath}>Don't have an account ? REGISTER</Link>
       </div>
       <div>
-        <Link to={loginPath}>Have an account ? Go to the login page</Link>
+        <Link to={loginPath}>Have an account ? Go to the LOGIN page</Link>
       </div>
 
       <Route
@@ -33,7 +33,6 @@ const Auth = (props) => {
         path={registerPath}
         render={() => <Registration {...props} />}
       />
-      <Redirect to={loginPath} />
     </div>
   );
 };
