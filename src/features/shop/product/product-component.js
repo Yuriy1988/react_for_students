@@ -12,6 +12,7 @@ class Product extends Component {
 
     this.state = {
       name: props.product.name,
+      price: props.product.price,
     };
   }
 
@@ -25,9 +26,9 @@ class Product extends Component {
   };
 
 
-  handleChange = (e) => {
+  handleChange = (key, e) => {
     this.setState({
-      name: e.target.value,
+      [key]: e.target.value,
     });
   };
 
@@ -42,8 +43,8 @@ class Product extends Component {
           className={styles.product}
           style={{ border: '1px solid black' }}
         >
-          <h2>Name: <input onChange={this.handleChange} value={this.state.name} /></h2>
-          <p>Price: {product.price}</p>
+          <h2>Name: <input onChange={this.handleChange.bind(null, 'name')} value={this.state.name} /></h2>
+          <p>Price: <input onChange={this.handleChange.bind(null, 'price')} value={this.state.price} /></p>
           <p>In Cart: {product.inCart}</p>
           <p>Total price: {product.price * product.inCart}</p>
           <button onClick={this.handleEdit}>Edit product</button>

@@ -1,8 +1,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, RECEIVE_PRODUCTS } from './types';
-import api from '../../core/utils/call-api';
 
 export const fetchProducts = () => {
-  return (dispatch) => {
+  return (dispatch, state, api) => {
     api('products')
       .then(response => {
         dispatch(receiveProducts(response.data));
@@ -10,12 +9,17 @@ export const fetchProducts = () => {
   };
 };
 
+const receiveProducts = payload => ({
+  type: RECEIVE_PRODUCTS,
+  payload,
+});
+
 export const editProduct = (product) => {
-  return () => {
+  return (dispatch) => {
     api(`products/${product.id}`, 'patch', product);
-    return Promise.resolve();
+    dispatch()
   };
-}
+};
 
 
 export const addToCart = (product) => {
@@ -26,11 +30,6 @@ export const addToCart = (product) => {
       });
   };
 };
-
-const receiveProducts = payload => ({
-  type: RECEIVE_PRODUCTS,
-  payload,
-});
 
 const addToCartSuccess = (id) => ({
   type: ADD_TO_CART,

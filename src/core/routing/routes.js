@@ -4,7 +4,7 @@ import Shop from '../../features/shop/shop-component';
 import Cart from '../../features/shop/cart/cart-component';
 import Product from '../../features/shop/product/product-component';
 import PrivateRoute from './private-route';
-import Login from '../../features/auth/auth-component';
+import Auth from '../../features/auth/auth-component';
 
 const Routes = () => {
   return (
@@ -15,7 +15,7 @@ const Routes = () => {
         to='/shop'
       />
       <Route
-        component={Login}
+        component={Auth}
         path='/auth'
       />
       <PrivateRoute

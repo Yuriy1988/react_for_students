@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from './shared/nav-component';
+import Nav from './shared/components/nav-component';
 import ProductList from './produc-list/product-list-component';
 import Filter from './filter/filter-component';
 import styles from './shop.scss';

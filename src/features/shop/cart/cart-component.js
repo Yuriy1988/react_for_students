@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import styles from './cart.module.scss';
 import { getProductsInCart, getTotalPrice } from '../selectors';
-import Nav from '../shared/nav-component';
+import Nav from '../shared/components/nav-component';
 
 const Cart = (props) => {
   const { productsInCart, totalPrice } = props;
