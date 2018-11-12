@@ -28,13 +28,11 @@ class Product extends Component {
     });
   };
 
-
   handleChange = (key, e) => {
     this.setState({
       [key]: e.target.value,
     });
   };
-
 
   render() {
     const { product } = this.props;

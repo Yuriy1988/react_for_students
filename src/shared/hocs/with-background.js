@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 function withBackground(WrappedComponent) {
-
   return class extends Component {
     state = { value: '' };
     onChange = (e) => {
@@ -9,8 +8,6 @@ function withBackground(WrappedComponent) {
     };
 
     render() {
-      console.log('WrappedComponent', WrappedComponent);
-
       const { value } = this.state;
       return (
         <div
