@@ -5,6 +5,8 @@ import Cart from '../../features/shop/cart/cart-component';
 import Product from '../../features/shop/product/product-component';
 import PrivateRoute from './private-route';
 import Auth from '../../features/auth/auth-component';
+import CreateProduct from '../../features/shop/create-product/create-product-component';
+
 
 const Routes = () => {
   return (
@@ -32,6 +34,11 @@ const Routes = () => {
         component={Product}
         exact
         path='/products/:id'
+      />
+      <PrivateRoute
+        component={CreateProduct}
+        exact
+        path='/shop/create'
       />
     </Switch>
   );

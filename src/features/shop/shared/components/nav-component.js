@@ -13,6 +13,12 @@ const Nav = () => {
       >Go to cart</NavLink>
       <NavLink
         activeClassName={styles.active}
+        className={styles.nav}
+        exact
+        to='/shop/create'
+      >Create new Product</NavLink>
+      <NavLink
+        activeClassName={styles.active}
         exact
         to='/shop'
       >Go to shop</NavLink>

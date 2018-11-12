@@ -15,21 +15,24 @@ const receiveProducts = payload => ({
 });
 
 export const editProduct = (product) => {
-  return (dispatch) => {
-    api(`products/${product.id}`, 'patch', product);
-    dispatch()
+  return (dispatch, state, api) => {
+    return api(`products/${product.id}`, 'patch', product);
   };
 };
 
 
 export const addToCart = (product) => {
-  return (dispatch) => {
+  return (dispatch, state, api) => {
     api(`products/${product.id}`, 'patch', { ...product, inCart: product.inCart + 1 })
       .then(response => {
         dispatch(addToCartSuccess(response.data.id));
       });
   };
 };
+
+export const createProduct = (product) => (
+  (dispatch, state, api) => api('products', 'post', product)
+);
 
 const addToCartSuccess = (id) => ({
   type: ADD_TO_CART,

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../../../../shared/components/button/button-component';
+import withPriceCategory from '../../../../shared/hocs/with-price-category';
 import styles from './product.module.scss';
 
 const Product = (props) => {
@@ -28,4 +29,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default withPriceCategory(Product);

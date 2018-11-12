@@ -1,6 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+
+import withBackground from '../../../shared/hocs/with-background';
 
 import { getProductById } from '../selectors';
 import { editProduct } from '../actions';
@@ -62,7 +65,8 @@ const mapDispatchToProps = {
   editProduct,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withBackground,
 )(Product);
